@@ -124,6 +124,24 @@ class doublyLinkedList{
       getCount(){
         return this.count
       }
+reverseList(){
+    if(this.head==null){
+        console.log("List is empty")
+        return
+    }
+    let current=this.head
+    let temp=null
+    while(current!=null){
+        temp=current.prev
+        current.prev=current.next
+        current.next=temp
+        current=current.prev
+    }
+    if(temp!=null){
+        this.tail=this.head
+        this.head=temp.prev
+    }
+}
 }
 const dll=new doublyLinkedList()
 dll.insertRear(5)
@@ -142,6 +160,7 @@ dll.deleteRear()
 dll.deletePos(2)
 dll.deletePos(1)
 dll.deletePos(2)
+dll.reverseList()
 dll.display()
 console.log(dll.getCount())
 

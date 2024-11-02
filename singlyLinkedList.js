@@ -113,6 +113,21 @@ class singlyLinkedList{
             }
         }
       }
+    reverseList(){
+        if(this.head==null){
+            console.log("List is empty")
+            return
+        }
+        let current=this.head
+        let next=null,prev=null
+        while(current!=null){
+            next=current.next
+            current.next=prev
+            prev=current
+            current=next
+        }
+        this.head=prev
+    }  
 }
 const sl=new singlyLinkedList()
 sl.append(1)
@@ -125,4 +140,5 @@ sl.removeFront()
 sl.removeFront()
 sl.removeAtPos(1)
 sl.removeAtPos(1)
+sl.reverseList()
 sl.display()
